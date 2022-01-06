@@ -1,0 +1,72 @@
+syntax="proto3";
+
+package student;
+
+option go_package="github.com/zeimedee/goGrpcRest/api/v1";
+
+import "google/api/annotations.proto";
+
+message Student {
+    string firstname = 1;
+    string lastname = 2;
+    uint32 age = 3;
+    string id= 4;
+}
+
+message CreateStudentRequest{
+    Student student=1;
+}
+
+message CreateStudentResponse{
+    Student student=1;
+}
+
+message ReadStudentRequest{
+    Student student=1;
+}
+
+message ReadStudentResponse{
+    Student student=1;
+}
+
+message UpdateStudentRequest{
+    Student student=1;
+}
+
+message UpdateStudentResponse{
+    Student student=1;
+}
+
+message DeleteStudentRequest{
+    Student student=1;
+}
+
+message DeleteStudentResponse{
+    Student student=1;
+}
+
+
+service StudentService{
+    rpc Create(CreateStudentRequest) returns (CreateStudentResponse){
+        option (google.api.http) = {
+            post:"/student/v1/create"
+            body: "*"
+        };
+    }
+    rpc Read(ReadStudentRequest) returns (ReadStudentResponse){
+        option (google.api.http) = {
+            get: "/student/v1/read"
+        };
+    }
+    rpc Update(UpdateStudentRequest) returns (UpdateStudentResponse){
+        option (google.api.http) = {
+            put: "/student/v1/update"
+            body:"*"
+        };
+    }
+    rpc Delete(DeleteStudentRequest) returns (DeleteStudentResponse){
+        option (google.api.http) ={
+            delete: "/student/v1/delete"
+        };
+    }
+}
