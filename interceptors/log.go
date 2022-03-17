@@ -16,8 +16,8 @@ func UnaryServerInterceptor() grpc.UnaryServerInterceptor {
 		handler grpc.UnaryHandler) (resp interface{}, err error) {
 		start := time.Now()
 
-		log.Println(info.FullMethod, time.Since(start), req)
 		res, err := handler(ctx, req)
+		log.Println(info.FullMethod, time.Since(start), req, res)
 
 		return res, err
 	}
