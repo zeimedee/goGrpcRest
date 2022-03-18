@@ -54,6 +54,6 @@ func main() {
 		Handler: gmux,
 	}
 
-	log.Println("servers is listening on localhost:8090")
+	log.Println("server is listening on localhost:8090")
 	log.Fatal(gServer.ListenAndServe())
 }
