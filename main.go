@@ -7,6 +7,7 @@ import (
 	"net"
 	"net/http"
 
+	"github.com/zeimedee/goGrpcRest/database"
 	"github.com/zeimedee/goGrpcRest/interceptors"
 	"github.com/zeimedee/goGrpcRest/server"
 
@@ -18,6 +19,7 @@ import (
 )
 
 func main() {
+	database.ConnectDb()
 	addr := ":8080"
 	lis, err := net.Listen("tcp", addr)
 	if err != nil {
